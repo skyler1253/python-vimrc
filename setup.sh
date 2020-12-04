@@ -83,7 +83,13 @@ echo "${NORMAL}"
 
   printf "${GREEN}%s${NORMAL}\n" "Vimrc has been configured ;)"
   printf "${YELLOW}%s${NORMAL}\n" "Do not worry about error messages. When it occurs just press enter and wait till all plugins are installed."
+
+
+  cp ./tmux.conf ~/.tmux.conf
+  printf "${GREEN}%s${NORMAL}\n" "Tmux has been configured"
   printf "${BLUE}%s${NORMAL}\n" "Keep calm and use VIM!"
+
+
 }
 
 wrapper

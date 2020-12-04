@@ -28,6 +28,9 @@ call vundle#begin()
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
 
+    Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'benmills/vimux'
+
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
@@ -52,7 +55,9 @@ call vundle#begin()
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
-
+    Plugin 'jeetsukumaran/vim-pythonsense'      "provides some Python-specific text objects: classes, functions, etc
+    Plugin 'jiangmiao/auto-pairs'               "inserts closing quotes and parenthesis as you type
+    
 call vundle#end()                           " required
 filetype on
 filetype plugin on
@@ -95,8 +100,8 @@ set exrc                                    " enable usage of additional .vimrc 
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
 " Additional mappings for Esc (useful for MacBook with touch bar)
-inoremap jj <Esc>
 inoremap jk <Esc>
+let mapleader = " "
 
 "=====================================================
 "" Tabs / Buffers settings
@@ -151,8 +156,8 @@ let g:riv_disable_folding=1
 "=====================================================
 
 " python executables for different plugins
-let g:pymode_python='python'
-let g:syntastic_python_python_exec='python'
+let g:pymode_python='python3'
+let g:syntastic_python_python_exec='python3'
 
 " rope
 let g:pymode_rope=0
@@ -168,14 +173,14 @@ let g:pymode_doc=0
 let g:pymode_doc_bind='K'
 
 " lints
-let g:pymode_lint=0
+let g:pymode_lint=1
 
 " virtualenv
 let g:pymode_virtualenv=1
 
 " breakpoints
-let g:pymode_breakpoint=1
-let g:pymode_breakpoint_key='<leader>b'
+" let g:pymode_breakpoint=1
+" let g:pymode_breakpoint_key='<leader>b'
 
 " syntax highlight
 let g:pymode_syntax=1
@@ -198,16 +203,17 @@ let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all
 let g:pymode_syntax_docstrings=g:pymode_syntax_all
 
 " highlight 'long' lines (>= 80 symbols) in python files
-augroup vimrc_autocmds
-    autocmd!
-    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
-    autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=80
-augroup END
+" augroup vimrc_autocmds
+"     autocmd!
+"     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+"     autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
+"     autocmd FileType python,rst,c,cpp set nowrap
+"     autocmd FileType python,rst,c,cpp set colorcolumn=80
+" augroup END
 
 " code folding
-let g:pymode_folding=0
+let g:pymode_folding=1
+" nnoremap <space> za
 
 " pep8 indents
 let g:pymode_indent=1
@@ -237,3 +243,29 @@ let g:ycm_confirm_extra_conf=0
 
 nmap <leader>g :YcmCompleter GoTo<CR>
 nmap <leader>d :YcmCompleter GoToDefinition<CR>
+
+
+" Skyler imports
+map <C-t> :NERDTreeToggle<CR>
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <Leader>b :ls<CR>:b<Space>
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Inspect runner pane
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
+
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k

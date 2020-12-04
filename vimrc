@@ -246,7 +246,10 @@ nmap <leader>d :YcmCompleter GoToDefinition<CR>
 
 
 " Skyler imports
+set rtp+=/usr/local/opt/fzf
+
 map <C-t> :NERDTreeToggle<CR>
+
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

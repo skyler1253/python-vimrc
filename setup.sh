@@ -85,7 +85,7 @@ echo "${NORMAL}"
   printf "${YELLOW}%s${NORMAL}\n" "Do not worry about error messages. When it occurs just press enter and wait till all plugins are installed."
 
   printf "${BLUE}%s${NORMAL}\n" "Symlinking /tmux.conf with ~/.tmux.conf..."
-  ln -fs /tmux.conf ~/.tmux.conf
+  ln -fs $VIM/tmux.conf ~/.tmux.conf
 
   printf "${GREEN}%s${NORMAL}\n" "Tmux has been configured"
   printf "${BLUE}%s${NORMAL}\n" "Keep calm and use VIM!"

@@ -16,7 +16,7 @@ Requirements
 How does it look?
 -----------------
 
-.. image:: https://github.com/ets-labs/python-vimrc/wiki/img/screenshot.png
+.. image:: https://github.com/skyler1253/python-vimrc/wiki/img/screenshot.png
 
 Installation
 ------------

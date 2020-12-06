@@ -1,0 +1,10 @@
+If the vim version isn't high enough on Ubuntu for YCM:
+
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+
+If the gcc version isn't high enough:
+
+sudo apt-get install gcc-8 g++-8
+CXX=/usr/bin/gcc-8 ./install.py --all

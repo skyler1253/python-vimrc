@@ -54,7 +54,8 @@ call vundle#begin()
 
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-    Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+    " Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+    Plugin 'dense-analysis/ale'
     Plugin 'jeetsukumaran/vim-pythonsense'      "provides some Python-specific text objects: classes, functions, etc
     Plugin 'jiangmiao/auto-pairs'               "inserts closing quotes and parenthesis as you type
     
@@ -157,7 +158,7 @@ let g:riv_disable_folding=1
 
 " python executables for different plugins
 let g:pymode_python='python3'
-let g:syntastic_python_python_exec='python3'
+" let g:syntastic_python_python_exec='python3'
 
 " rope
 let g:pymode_rope=0
@@ -203,17 +204,20 @@ let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all
 let g:pymode_syntax_docstrings=g:pymode_syntax_all
 
 " highlight 'long' lines (>= 80 symbols) in python files
-" augroup vimrc_autocmds
-"     autocmd!
-"     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
-"     autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
-"     autocmd FileType python,rst,c,cpp set nowrap
-"     autocmd FileType python,rst,c,cpp set colorcolumn=80
-" augroup END
+augroup vimrc_autocmds
+    autocmd!
+    autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType python,rst,c,cpp match Excess /\%121v.*/
+    autocmd FileType python,rst,c,cpp set nowrap
+    autocmd FileType python,rst,c,cpp set colorcolumn=120
+augroup END
 
 " code folding
-let g:pymode_folding=1
-" nnoremap <space> za
+let g:pymode_folding=0
+nnoremap <.> za
+set foldmethod=indent
+set foldlevel=99
+let g:SimpylFold_docstring_preview=1
 
 " pep8 indents
 let g:pymode_indent=1
@@ -222,24 +226,39 @@ let g:pymode_indent=1
 let g:pymode_run=1
 let g:pymode_run_bind='<F5>'
 
+" ale formatting
+let g:ale_linters = {
+      \   'python': ['flake8'],
+      \   'javascript': ['eslint'],
+      \}
+let g:ale_fixers = {
+      \    'python': ['black'],
+      \}
+nmap <F8> :ALEFix<CR>
+let g:ale_fix_on_save = 1
+
+let g:ale_python_flake8_options = '--max-line-length=120'
+
+
 " syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_enable_signs=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_aggregate_errors=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_error_symbol='X'
-let g:syntastic_style_error_symbol='X'
-let g:syntastic_warning_symbol='x'
-let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_enable_signs=1
+" let g:syntastic_check_on_wq=0
+" let g:syntastic_aggregate_errors=1
+" let g:syntastic_loc_list_height=5
+" let g:syntastic_error_symbol='X'
+" let g:syntastic_style_error_symbol='X'
+" let g:syntastic_warning_symbol='x'
+" let g:syntastic_style_warning_symbol='x'
+" let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
 
 " YouCompleteMe
 set completeopt-=preview
 
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
+let g:ycm_autoclose_preview_window_after_completion=1
 
 nmap <leader>g :YcmCompleter GoTo<CR>
 nmap <leader>d :YcmCompleter GoToDefinition<CR>
@@ -273,13 +292,13 @@ map <Leader>vz :VimuxZoomRunner<CR>
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
+" let g:comfortable_motion_scroll_down_key = "j"
+" let g:comfortable_motion_scroll_up_key = "k"
 
-nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * 2)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * -2)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * 4)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * -4)<CR>
+" nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * 2)<CR>
+" nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * -2)<CR>
+" nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * 4)<CR>
+" nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_imp    ulse_multiplier * winheight(0) * -4)<CR>
 
 no <down> <Nop>
 no <left> <Nop>

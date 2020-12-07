@@ -8,3 +8,6 @@ If the gcc version isn't high enough:
 
 sudo apt-get install gcc-8 g++-8
 CXX=/usr/bin/gcc-8 ./install.py --all
+
+sudo pip3 install black
+sudo pip3 install flake8

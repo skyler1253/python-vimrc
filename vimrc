@@ -50,7 +50,7 @@ call vundle#begin()
     Plugin 'tpope/vim-commentary'               " Comment stuff out
     Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
     Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-    Plugin 'Valloric/YouCompleteMe', { 'commit':'d98f896'  } " Autocomplete plugin 
+    Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin 
 
     "-------------------=== Python  ===-----------------------------
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
@@ -113,7 +113,7 @@ set switchbuf=useopen
 set laststatus=2
 nmap <F9> :bprev<CR>
 nmap <F10> :bnext<CR>
-nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
+" nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
 "" Search settings
 "=====================================================
@@ -125,8 +125,11 @@ set hlsearch	                            " highlight search results
 "=====================================================
 let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#formatter='unique_tail'
-let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
+" let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_powerline_fonts=0
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
 "=====================================================
 "" TagBar settings
 "=====================================================
@@ -179,9 +182,10 @@ let g:pymode_lint=1
 " virtualenv
 let g:pymode_virtualenv=1
 
+
 " breakpoints
-" let g:pymode_breakpoint=1
-" let g:pymode_breakpoint_key='<leader>b'
+let g:pymode_breakpoint=0
+let g:pymode_breakpoint_key='<Leader>vb'
 
 " syntax highlight
 let g:pymode_syntax=1

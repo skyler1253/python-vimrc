@@ -1,17 +1,23 @@
 If the vim version isn't high enough on Ubuntu for YCM:
 
+
+sudo apt install vim-youcompleteme
+vim-addon-manager install youcompleteme
+
+
+sudo pip3 install black
+sudo pip3 install flake8
+
+
+Other options:
+
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim
 sudo apt-get install exuberant-ctags
-
-sudo apt install vim-youcompleteme
-vim-addon-manager install youcompleteme
 
 If the gcc version isn't high enough:
 
 sudo apt-get install gcc-8 g++-8
 CXX=/usr/bin/gcc-8 ./install.py --all
 
-sudo pip3 install black
-sudo pip3 install flake8

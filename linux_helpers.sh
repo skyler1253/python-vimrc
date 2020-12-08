@@ -2,7 +2,7 @@
 
 #If the vim version isn't high enough on Ubuntu for YCM:
 
-sudo apt install -y vim-youcompleteme exuberant-ctags
+sudo apt install -y vim-youcompleteme exuberant-ctags python3-pip
 vim-addon-manager install youcompleteme
 
 sudo pip3 install black flake8 

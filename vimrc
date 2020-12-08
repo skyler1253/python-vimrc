@@ -30,6 +30,8 @@ call vundle#begin()
 
     Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'benmills/vimux'
+    Plugin 'greghor/vim-pyShell'
+    Plugin 'julienr/vim-cellmode'
 
     "-------------------=== Other ===-------------------------------
     Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
@@ -50,6 +52,7 @@ call vundle#begin()
     Plugin 'tpope/vim-commentary'               " Comment stuff out
     Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
     Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
+    Plugin 'valloric/youcompleteme'
     " Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }            " Autocomplete plugin 
 
     "-------------------=== Python  ===-----------------------------
@@ -320,3 +323,34 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+
+" vim cell-mode parameters
+let g:cellmode_use_tmux=1
+let g:cellmode_tmux_panenumber=1
+
+" ipython-shell
+noremap ,ss :call StartPyShell()<CR>
+noremap ,sk :call StopPyShell()<CR>
+
+" code execution
+nnoremap ,l  :call PyShellSendLine()<CR>
+noremap <silent> <C-b> :call RunTmuxPythonCell(0)<CR>
+noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
+
+" code inspection
+nnoremap ,sl :call PyShellSendKey("len(<C-R><C-W>)\r")<CR><Esc>
+nnoremap ,sc :call PyShellSendKey("<C-R><C-W>.count()\r")<CR><Esc>
+nnoremap ,so :call PyShellSendKey("<C-R><C-W>\r")<CR><Esc>
+vnoremap ,so y:call PyShellSendKey(substitute('<C-R>0',"\"","\\\"","")."\r")<CR> 
+
+" on data frames
+nnoremap ,sdh :call PyShellSendKey("<C-R><C-W>.head()\r")<CR><Esc>
+nnoremap ,sdc :call PyShellSendKey("<C-R><C-W>.columns\r")<CR><Esc>
+nnoremap ,sdi :call PyShellSendKey("<C-R><C-W>.info()\r")<CR><Esc>
+nnoremap ,sdd :call PyShellSendKey("<C-R><C-W>.describe()\r")<CR><Esc>
+nnoremap ,sdt :call PyShellSendKey("<C-R><C-W>.dtypes\r")<CR><Esc>
+
+" plot
+nnoremap ,spp :call PyShellSendKey("<C-R><C-W>.plot()\r")<CR><Esc>
+nnoremap ,sph :call PyShellSendKey("<C-R><C-W>.hist()\r")<CR><Esc>
+nnoremap ,spc :call PyShellSendKey("plt.close('all')\r")<CR><Esc>

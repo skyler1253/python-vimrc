@@ -7,6 +7,13 @@ vim-addon-manager install youcompleteme
 
 sudo pip3 install black flake8 
 
+##
+## Newer linux
+sudo apt install build-essential cmake vim-nox python3-dev exuberant-ctags
+sudo apt install mono-complete golang nodejs default-jdk npm
+#cd folder with youcompleteme
+python3 install.py --all
+
 # Other options:
 
 # sudo add-apt-repository ppa:jonathonf/vim

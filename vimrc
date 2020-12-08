@@ -293,6 +293,8 @@ map <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 map <Leader>vz :VimuxZoomRunner<CR>
 
+map <Leader>fj :%!python -m json.tool<CR>
+
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 

@@ -329,28 +329,28 @@ let g:cellmode_use_tmux=1
 let g:cellmode_tmux_panenumber=1
 
 " ipython-shell
-noremap ,ss :call StartPyShell()<CR>
-noremap ,sk :call StopPyShell()<CR>
+map <Leader>ss :call StartPyShell()<CR>
+map <Leader>sk :call StopPyShell()<CR>
 
 " code execution
-nnoremap ,l  :call PyShellSendLine()<CR>
-noremap <silent> <C-b> :call RunTmuxPythonCell(0)<CR>
-noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
+map <Leader>sl  :call PyShellSendLine()<CR>
+" noremap <silent> <C-b> :call RunTmuxPythonCell(0)<CR>
+" noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
 
 " code inspection
-nnoremap ,sl :call PyShellSendKey("len(<C-R><C-W>)\r")<CR><Esc>
-nnoremap ,sc :call PyShellSendKey("<C-R><C-W>.count()\r")<CR><Esc>
-nnoremap ,so :call PyShellSendKey("<C-R><C-W>\r")<CR><Esc>
+map <Leader>sle :call PyShellSendKey("len(<C-R><C-W>)\r")<CR><Esc>
+map <Leader>sc :call PyShellSendKey("<C-R><C-W>.count()\r")<CR><Esc>
+map <Leader>so :call PyShellSendKey("<C-R><C-W>\r")<CR><Esc>
 vnoremap ,so y:call PyShellSendKey(substitute('<C-R>0',"\"","\\\"","")."\r")<CR> 
 
 " on data frames
-nnoremap ,sdh :call PyShellSendKey("<C-R><C-W>.head()\r")<CR><Esc>
-nnoremap ,sdc :call PyShellSendKey("<C-R><C-W>.columns\r")<CR><Esc>
-nnoremap ,sdi :call PyShellSendKey("<C-R><C-W>.info()\r")<CR><Esc>
-nnoremap ,sdd :call PyShellSendKey("<C-R><C-W>.describe()\r")<CR><Esc>
-nnoremap ,sdt :call PyShellSendKey("<C-R><C-W>.dtypes\r")<CR><Esc>
+map <Leader>sdh :call PyShellSendKey("<C-R><C-W>.head()\r")<CR><Esc>
+map <Leader>sdc :call PyShellSendKey("<C-R><C-W>.columns\r")<CR><Esc>
+map <Leader>sdi :call PyShellSendKey("<C-R><C-W>.info()\r")<CR><Esc>
+map <Leader>sdd :call PyShellSendKey("<C-R><C-W>.describe()\r")<CR><Esc>
+map <Leader>sdt :call PyShellSendKey("<C-R><C-W>.dtypes\r")<CR><Esc>
 
 " plot
-nnoremap ,spp :call PyShellSendKey("<C-R><C-W>.plot()\r")<CR><Esc>
-nnoremap ,sph :call PyShellSendKey("<C-R><C-W>.hist()\r")<CR><Esc>
-nnoremap ,spc :call PyShellSendKey("plt.close('all')\r")<CR><Esc>
+map <Leader>spp :call PyShellSendKey("<C-R><C-W>.plot()\r")<CR><Esc>
+map <Leader>sph :call PyShellSendKey("<C-R><C-W>.hist()\r")<CR><Esc>
+map <Leader>spc :call PyShellSendKey("plt.close('all')\r")<CR><Esc>

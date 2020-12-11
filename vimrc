@@ -341,6 +341,8 @@ map <Leader>sl  :call PyShellSendLine()<CR>
 map <Leader>sle :call PyShellSendKey("len(<C-R><C-W>)\r")<CR><Esc>
 map <Leader>sc :call PyShellSendKey("<C-R><C-W>.count()\r")<CR><Esc>
 map <Leader>so :call PyShellSendKey("<C-R><C-W>\r")<CR><Esc>
+map <Leader>sh :call PyShellSendKey("<C-R><C-W>.shape\r")<CR><Esc>
+
 vnoremap ,so y:call PyShellSendKey(substitute('<C-R>0',"\"","\\\"","")."\r")<CR> 
 
 " on data frames
@@ -354,3 +356,8 @@ map <Leader>sdt :call PyShellSendKey("<C-R><C-W>.dtypes\r")<CR><Esc>
 map <Leader>spp :call PyShellSendKey("<C-R><C-W>.plot()\r")<CR><Esc>
 map <Leader>sph :call PyShellSendKey("<C-R><C-W>.hist()\r")<CR><Esc>
 map <Leader>spc :call PyShellSendKey("plt.close('all')\r")<CR><Esc>
+
+vnoremap <Leader>y "*y
+vnoremap <Leader>p "*p
+" noremap <Leader>Y "+y
+" noremap <Leader>P "+p

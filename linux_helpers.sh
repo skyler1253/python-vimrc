@@ -25,3 +25,6 @@ python3 install.py --all
 # sudo apt-get install gcc-8 g++-8
 # CXX=/usr/bin/gcc-8 ./install.py --all
 
+
+#configure tmux:
+echo 'alias dev="bash ~/.vim/tmux_session.sh"' >> ~/.bashrc 

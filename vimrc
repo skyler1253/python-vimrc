@@ -137,8 +137,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "" TagBar settings
 "=====================================================
 let g:tagbar_autofocus=0
-let g:tagbar_width=42
-autocmd BufEnter *.py :call tagbar#autoopen(0)
+let g:tagbar_width=36
+" autocmd BufEnter *.py :call tagbar#autoopen(0)
+nmap <leader>t :TagbarToggle<CR>
 
 "=====================================================
 "" NERDTree settings
@@ -242,7 +243,7 @@ let g:ale_fixers = {
       \    'python': ['black'],
       \}
 nmap <F8> :ALEFix<CR>
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_python_flake8_options = '--max-line-length=120'
 
@@ -334,8 +335,10 @@ map <Leader>sk :call StopPyShell()<CR>
 
 " code execution
 map <Leader>sl  :call PyShellSendLine()<CR>
-" noremap <silent> <C-b> :call RunTmuxPythonCell(0)<CR>
-" noremap <C-a> :call RunTmuxPythonAllCellsAbove()<CR>
+" noremap <silent> <C-e> :call RunTmuxPythonCell(0)<CR>
+" noremap <C-w> :call RunTmuxPythonAllCellsAbove()<CR>
+nnoremap <C-d> <PageDown>
+nnoremap <C-u> <PageUp>"
 
 " code inspection
 map <Leader>sle :call PyShellSendKey("len(<C-R><C-W>)\r")<CR><Esc>
@@ -361,3 +364,6 @@ vnoremap <Leader>y "*y
 vnoremap <Leader>p "*p
 " noremap <Leader>Y "+y
 " noremap <Leader>P "+p
+"
+" set pastetoggle=<F2>
+set pastetoggle=<leader>pp

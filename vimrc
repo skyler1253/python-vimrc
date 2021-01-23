@@ -52,7 +52,7 @@ call vundle#begin()
     Plugin 'tpope/vim-commentary'               " Comment stuff out
     Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
     Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-    Plugin 'valloric/youcompleteme'
+    " Plugin 'valloric/youcompleteme'
     " Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --system-libclang' }            " Autocomplete plugin 
 
     "-------------------=== Python  ===-----------------------------
@@ -153,6 +153,7 @@ nmap " :NERDTreeToggle<CR>
 "" SnipMate settings
 "=====================================================
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
+let g:snipMate = { 'snippet_version' : 1 }
 
 "=====================================================
 "" Riv.vim settings
